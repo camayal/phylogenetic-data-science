@@ -1,0 +1,1951 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../../docs/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.7">
+    
+    
+      
+        <title>x.4 - Code - Node class - Phylogenetic Data Science (IN DEVELOPMENT)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.cd566b2a.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-XXXXXXXXXX"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-XXXXXXXXXX",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#code-an-example-node-and-tree-class" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Phylogenetic Data Science (IN DEVELOPMENT)" class="md-header__button md-logo" aria-label="Phylogenetic Data Science (IN DEVELOPMENT)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Phylogenetic Data Science (IN DEVELOPMENT)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              x.4 - Code - Node class
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/eaton-lab/phylogenetic-data-science/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Phylogenetic Data Science (IN DEVELOPMENT)" class="md-nav__button md-logo" aria-label="Phylogenetic Data Science (IN DEVELOPMENT)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Phylogenetic Data Science (IN DEVELOPMENT)
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/eaton-lab/phylogenetic-data-science/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        About/Ethos
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/" class="md-nav__link">
+        Installation/Software
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/" class="md-nav__link">
+        Columbia course
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          0 - Coding Bootcamp
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="0 - Coding Bootcamp" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          0 - Coding Bootcamp
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootcamp/getting-started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootcamp/0.0-installation-conda/" class="md-nav__link">
+        0.0 - Installation (conda)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootcamp/0.1-jupyter-and-binder/" class="md-nav__link">
+        0.1 - Python Jupyter/Binder
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootcamp/0.2-python-types/" class="md-nav__link">
+        x.2 - Python types
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootcamp/0.3-python-funcs.md" class="md-nav__link">
+        x.3 - Python functions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootcamp/0.4-python-classes.md" class="md-nav__link">
+        x.4 - Python classes
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../bootcamp/0.5-python-style.md" class="md-nav__link">
+        x.5 - Python style
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          1 - Trees as data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="1 - Trees as data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          1 - Trees as data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.1-introduction/" class="md-nav__link">
+        x.1 - Introduction
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.2-tree-thinking/" class="md-nav__link">
+        x.2 - Tree Thinking
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.3-visualization/" class="md-nav__link">
+        x.3 - Visualization
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          x.4 - Code - Node class
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        x.4 - Code - Node class
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-data-structure" class="md-nav__link">
+    Table data structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tree-data-structure" class="md-nav__link">
+    Tree data structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-practices" class="md-nav__link">
+    Coding practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oop" class="md-nav__link">
+    OOP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-class-1" class="md-nav__link">
+    Node class 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-class-2" class="md-nav__link">
+    Node class 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traversal" class="md-nav__link">
+    Traversal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-simple-tree" class="md-nav__link">
+    Create a simple tree
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.5-code-tree-class/" class="md-nav__link">
+        x.5 - Code - Tree class
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../1.6-exercises.md" class="md-nav__link">
+        x.6 - Exercises
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          2 - Trees as models
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2 - Trees as models" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          2 - Trees as models
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-2/2.0-tree-models.md" class="md-nav__link">
+        x.0 - Tree as evolutionary models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../y.md" class="md-nav__link">
+        x.1 - Genealogies, Gene Trees, and Species Trees
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../z.md" class="md-nav__link">
+        x.2 - Tree Sequences and ARGs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linkm.md" class="md-nav__link">
+        x.3 - Genetic linkage?
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-reading-list.md" class="md-nav__link">
+        Reading and Exercises
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          3 - Genealogies
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="3 - Genealogies" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          3 - Genealogies
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.0-wright-fisher.md" class="md-nav__link">
+        x.0 - The Wright-Fisher Process
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.1-coalescent.md" class="md-nav__link">
+        x.1 - Kingman Coalescent
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.2-msprime.md" class="md-nav__link">
+        x.2 - Coalescent simulations (msprime)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.3-demography.md" class="md-nav__link">
+        x.3 - Demographic models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.4-ipcoal.md" class="md-nav__link">
+        x.4 - Species Tree simulations (ipcoal)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-3/3.x-coalescent-probability.md" class="md-nav__link">
+        x.x - Code - Coalescent probability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-3/3.x-MSC-probability.md" class="md-nav__link">
+        x.x - Code - MSC probability
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../chapter-3/3-reading-list.md" class="md-nav__link">
+        Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../..." class="md-nav__link">
+        Further Reading
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          4 - Mutations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="4 - Mutations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          4 - Mutations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.0-mutations.md" class="md-nav__link">
+        x.0 - 'infinite-sites' mutations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.1-substituions.md" class="md-nav__link">
+        x.1 - Markov substitution models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.2-markov-models.md" class="md-nav__link">
+        x.2 - Statistical properties of Markov models
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-reading-list.md" class="md-nav__link">
+        Reading and Exercises
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          5 - Data
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="5 - Data" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          5 - Data
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.1-data-formats.md" class="md-nav__link">
+        x.1 - data formats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.2-strings-and-matrices.md" class="md-nav__link">
+        x.2 - strings, tables, and matrices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.3-variant" class="md-nav__link">
+        x.3 - SNP data (variant call format)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../x.x-simulating-traits.md" class="md-nav__link">
+        x.x - Code - simulating data/traits
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../x.x-sequence-alignment.md" class="md-nav__link">
+        x.x - Code - sequence alignment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../x.x-converting-file-formats.md" class="md-nav__link">
+        x.x - Code - converting file formats
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../read, write, parse, find, and clean phylip, fasta, fastq, and vcf data." class="md-nav__link">
+        Exercises
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          6 - Inference (Distance-based)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="6 - Inference (Distance-based)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          6 - Inference (Distance-based)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../..." class="md-nav__link">
+        x.x - Distance based trees
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../..." class="md-nav__link">
+        x.x - Code - UPGMA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../..." class="md-nav__link">
+        x.x - Code - Neighbor Joining
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../..." class="md-nav__link">
+        Exercises
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../..." class="md-nav__link">
+        Reading
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_11">
+          7 - Inference (Parsimony)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="7 - Inference (Parsimony)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          7 - Inference (Parsimony)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xx.md" class="md-nav__link">
+        x.0 - Maximum Parsimony
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yy.md" class="md-nav__link">
+        x.1 - Scoring parsimony
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yy.md" class="md-nav__link">
+        x.2 - Tree Space
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xx.ipynb" class="md-nav__link">
+        x.3 - Inferring
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-reading-list.md" class="md-nav__link">
+        Reading and Exercises
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_12" type="checkbox" id="__nav_12" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_12">
+          8 - Inference (Likelihood)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="8 - Inference (Likelihood)" data-md-level="1">
+        <label class="md-nav__title" for="__nav_12">
+          <span class="md-nav__icon md-icon"></span>
+          8 - Inference (Likelihood)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xx.md" class="md-nav__link">
+        x.0 - Maximum Likelihood
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yy.md" class="md-nav__link">
+        x.1 - Genealogies
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../yy.md" class="md-nav__link">
+        x.2 - Sequences
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../xx.ipynb" class="md-nav__link">
+        x.3 - Inferring
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1-reading-list.md" class="md-nav__link">
+        Reading and Exercises
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-data-structure" class="md-nav__link">
+    Table data structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tree-data-structure" class="md-nav__link">
+    Tree data structure
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-practices" class="md-nav__link">
+    Coding practices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#oop" class="md-nav__link">
+    OOP
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-class-1" class="md-nav__link">
+    Node class 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-class-2" class="md-nav__link">
+    Node class 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traversal" class="md-nav__link">
+    Traversal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-simple-tree" class="md-nav__link">
+    Create a simple tree
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/eaton-lab/phylogenetic-data-science/edit/master/docs/chapter-1/1.4-code-node-class.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="code-an-example-node-and-tree-class">Code: An example Node and Tree class<a class="headerlink" href="#code-an-example-node-and-tree-class" title="Permanent link">&para;</a></h1>
+<p>A tree can be represented in a variety of ways. Its representation can be
+visual, as we have seen already in drawings/plots of trees generated with 
+graphical tools. But trees can also be represented as a data structure -- 
+an object for storing information -- which is a widely used .. for trees.
+This is where computing comes in. How can we create a tree data structure, 
+what does that even mean? Let's walk through it.</p>
+<p>A goal of representing a tree as a data structure is to be able to extract
+information from the tree. So let's start by trying to identify what 
+information <em>can</em> or <em>must</em> exist in a tree. Start by looking at the tree 
+drawing below and try to identify its core features.</p>
+<details class="example">
+<summary>Example code to create simple tree figure</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># generate a random 8 tip ultrametric tree</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">toytree</span><span class="o">.</span><span class="n">rtree</span><span class="o">.</span><span class="n">unittree</span><span class="p">(</span><span class="n">ntips</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># draw the tree facing downwards with index node labels shown</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">node_labels</span><span class="o">=</span><span class="s2">&quot;idx&quot;</span><span class="p">,</span> <span class="n">node_sizes</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<figure>
+<p><img _="," alt="Heatmap image" loading="lazy" src="../../images/1.1.1-heatmap.png" width="400" />
+  </p>
+<figcaption>A tree representing hierarchical relationships among  
+    arbitrary data looks similar to an evolutionary tree, but has 
+    a different meaning.
+  </figcaption>
+</figure>
+<details class="example">
+<summary>Example code to create a labeled tree figure</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># generate a random 8 tip ultrametric tree</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">toytree</span><span class="o">.</span><span class="n">rtree</span><span class="o">.</span><span class="n">unittree</span><span class="p">(</span><span class="n">ntips</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># draw the tree facing downward</span>
+<span class="n">canvas</span><span class="p">,</span> <span class="n">axes</span><span class="p">,</span> <span class="n">mark</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">)</span>
+
+<span class="c1"># add text annotations to the same coordinate axes</span>
+<span class="n">mark2</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># add line annotations to the same coordinate axes</span>
+<span class="n">mark3</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<figure>
+<p><img _="," alt="Heatmap image" loading="lazy" src="../../images/1.1.1-heatmap.png" width="400" />
+  </p>
+<figcaption>A tree representing hierarchical relationships among  
+    arbitrary data looks similar to an evolutionary tree, but has 
+    a different meaning.
+  </figcaption>
+</figure>
+<p>(1) Which Nodes connect to others (edges); (2) the lengths of these
+connections (edge lengths). This simplest form can be represented with 
+a table, like the example below.</p>
+<h3 id="table-data-structure">Table data structure<a class="headerlink" href="#table-data-structure" title="Permanent link">&para;</a></h3>
+<p>Storing trees as a table has potential benefits over alternative approaches.
+For one, a table is very memory efficient. If you have a tree with 1 million
+Nodes this could be stored in the space required for storing two columns
+of 1 million integers. This fact is taken advantage of in software tools
+like <code>tskit</code>, which is used to study collections of genealogical trees 
+across entire genomes, which can include millions of trees of large 
+size, where similarities among trees are recorded in the same table, rather
+than by duplicating their records. We will cover this in chapter XX.</p>
+<p>While tables can be efficient for storing and studying fixed trees, they 
+are not the most efficient when the tree structure needs to be mutable, i.e.,
+when we plan to modify the tree at various times by adding and/or 
+removing Nodes from the tree.
+Depending on where the new Nodes are placed, we will need to increment the
+labels of each Node to update which ones are connected to which. Similarly, 
+if we wanted to re-root the tree, or change other attributes such as the edge
+lengths. </p>
+<details class="example">
+<summary>Example code get an edge table from a ToyTree</summary>
+<div class="highlight"><pre><span></span><code><span class="c1"># generate a random 8 tip ultrametric tree</span>
+<span class="n">tree</span> <span class="o">=</span> <span class="n">toytree</span><span class="o">.</span><span class="n">rtree</span><span class="o">.</span><span class="n">unittree</span><span class="p">(</span><span class="n">ntips</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># get the tree edges as a table (DataFrame) and print</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">get_edges</span><span class="p">())</span>
+
+<span class="c1"># OR</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">toyplot</span><span class="o">.</span><span class="n">Canvas</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">table</span><span class="p">(</span><span class="n">tree</span><span class="o">.</span><span class="n">get_edges</span><span class="p">(),</span> <span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="s2">&quot;50%&quot;</span><span class="p">,</span> <span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="s2">&quot;95%&quot;</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">cartesian</span><span class="p">(</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;50%&quot;</span><span class="p">,</span> <span class="s2">&quot;95%&quot;</span><span class="p">,</span> <span class="s2">&quot;5%&quot;</span><span class="p">,</span> <span class="s2">&quot;95%&quot;</span><span class="p">))</span>
+<span class="n">tree</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">axes</span><span class="o">=</span><span class="n">axes</span><span class="p">);</span>
+</code></pre></div>
+</details>
+<p><img align="left" alt="Placeholder" src="https://dummyimage.com/300x305/eee/aaa" /></p>
+<div class="highlight"><pre><span></span><code>    child  parent
+0       0       8
+1       1       8
+2       2       9
+3       3       9
+4       4      11
+5       5      11
+6       6      13
+7       7      13
+8       8      10
+9       9      10
+10     10      12
+11     11      12
+12     12      14
+13     13      14
+</code></pre></div>
+<p>For example, say we wanted to find the names of all descendants of internal 
+Node "F" in the tree above. Using a table this would multiple lookups in the
+table to ask which nodes are directly descended from "F", and then which are
+descended from those descendants. In Python, a table would likely be stored
+as an array, ndarray, or DataFrame, where such lookups are fast in absolute
+terms, but still slow relative to an alternative approach.</p>
+<h3 id="tree-data-structure">Tree data structure<a class="headerlink" href="#tree-data-structure" title="Permanent link">&para;</a></h3>
+<p>An alternative is to store the Nodes as a Tree data structure. In general 
+terms, this can be done in any object-oriented programming language where
+arbitrary class objects can be created in memory, and references among these 
+objects can also be stored. This approach to object-oriented programming 
+(OOP) is widely used, especially in languages like C, Java, and Python.</p>
+<p>Doing so requires tracing the connections among nodes, from one to the next,
+in a certain order. This process, termed a <code>tree traversal</code>, turns out to 
+be a very common algorithm used throughout computer science. Consequently,
+the development of tree data structures have been well studied. For example,
+the file system on your computer represents a tree data structure, where 
+folders are nested within folders nested within folders. File browsers and 
+other computer programs <code>traverse</code> the file system frequently, for example 
+when looking for files of a certain name or type. This process could be 
+accomplished by storing the names and types of all files in memory at once, 
+however, it is much more efficient to simply look inside each subfolder at 
+a time, as it is visited, during the traversal process. Moreover, if you have
+some idea of where the file you are looking for is located, you can start the
+search from that location and only files <em>descended</em> (nested within) that 
+location will be searched. </p>
+<p>We will find that traversal strategies are a core concept in developing and
+using tree-based algorithms. This makes them not only central to certain 
+computational methods, but also central to many algorithms used in 
+evolutionary biology.</p>
+<h3 id="coding-practices">Coding practices<a class="headerlink" href="#coding-practices" title="Permanent link">&para;</a></h3>
+<p>Because this is our coding exercise we will start slowly, describing the
+steps that are taken and why. This lesson will use concepts from the 
+bootcamp chapter including <code>types</code>, <code>type hints</code>, and 
+<code>Object oriented programming</code>. </p>
+<h3 id="oop">OOP<a class="headerlink" href="#oop" title="Permanent link">&para;</a></h3>
+<p>Let's develop a Tree class object. Here we will benefit from object 
+oriented programming, and this lesson will serve to introduce some core
+concepts of OOP.</p>
+<p>A tree is composed of Nodes and Edges. These could each be represented by 
+an object in memory, however, a more common approach when working with 
+tree or graph data structures is to simply represent Nodes in memory, and
+for Edges to represent the relationships among Node objects.</p>
+<h3 id="node-class-1">Node class 1<a class="headerlink" href="#node-class-1" title="Permanent link">&para;</a></h3>
+<p>We will walkthrough the development of a Node class object for storing 
+information in a tree data structure. To describe this development we 
+will start with a very simple object and then iteratively add to it to 
+build up to a more complex Python class.</p>
+<p><strong>What is a Node?</strong> 
+A single Node of a tree can either be a terminal, internal, or root Node.
+A terminal node has no descendants, this is sometimes referred to its 
+degree=1 (reference), because it has one edge in (its parent), and no edges
+out (no descendants). An internal Node by contrast has degree &gt;= 2, since it
+has a parent in addition to one or more descendants. Finally, a root node 
+can have degree &gt;= 2, but it does not have a parent edge, only descendants.</p>
+<p>Each of these can be represented by a class object that simply store other 
+objects as its parent and children. Let's start with a simple example.
+Each NodeExample class object has a name and dist associated with it. </p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Node1</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">dist</span><span class="p">):</span>
+        <span class="c1"># store parameters</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dist</span> <span class="o">=</span> <span class="n">dist</span>
+
+        <span class="c1"># default attributes of Node objects</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<p>This class is very simple, and so not yet very useful. But already we can 
+begin to create a tree data structure simply by creating connections among
+Node objects. Below we create three Node instances with different names, 
+and then edit the <code>.children</code> or <code>.up</code> attributes to create references 
+(pointers) from one to another, such that the node named "A" is parent to
+Nodes "B" and "C". </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># create several Node objects</span>
+<span class="n">node_a</span> <span class="o">=</span> <span class="n">Node1</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">node_b</span> <span class="o">=</span> <span class="n">Node1</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="n">node_c</span> <span class="o">=</span> <span class="n">Node1</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># connect them to setting their children and/or up attributes</span>
+<span class="n">node_a</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="p">(</span><span class="n">node_b</span><span class="p">,</span> <span class="n">node_c</span><span class="p">)</span>
+<span class="n">node_b</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="n">node_a</span>
+<span class="n">node_c</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="n">node_a</span>
+</code></pre></div>
+<p>There is now information not only within each class instance, but there is 
+also information we can extract about the relationships among them. Below
+this is done within a for-loop visiting each node to print some information
+from its attributes:</p>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># now each Node has data (information about itself and its connections)</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="p">(</span><span class="n">node1</span><span class="p">,</span> <span class="n">node2</span><span class="p">,</span> <span class="n">node3</span><span class="p">):</span>
+    <span class="n">children_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+    <span class="n">parent_name</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">up</span> <span class="k">else</span> <span class="s2">&quot;None&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, children=</span><span class="si">{</span><span class="n">children_names</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="p">{</span><span class="n">parent_name</span><span class="p">})</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>A, children=[B, C], up=None
+B, children=[], up=A
+C, children=[], up=A
+</code></pre></div></p>
+<h3 id="node-class-2">Node class 2<a class="headerlink" href="#node-class-2" title="Permanent link">&para;</a></h3>
+<p>Now let's make a more proper version this class. This should include a well
+formatted docstring, and type hints for all parameters and attributes of the
+class. Here we import an interesting new extension called <code>annotations</code> which
+allows us to reference the new class we are defining as a type hint for 
+itself (i.e., the Node class children are also Node class objects).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="k">class</span> <span class="nc">NodeBase</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A Node instance that can connect with other Nodes to form a Tree.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name: str</span>
+<span class="sd">        A name string associated with a Node when printed or visualized.</span>
+<span class="sd">    dist: float</span>
+<span class="sd">        A float value as the distance between this Node and its parent (up)</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    children: Tuple</span>
+<span class="sd">        A tuple of Node instances that are descended from this Node.</span>
+<span class="sd">    up: Node or None</span>
+<span class="sd">        A Node that is ancestral to this Node, or None if this Node is root.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">dist</span><span class="p">:</span> <span class="nb">float</span><span class="o">=</span><span class="mf">0.</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dist</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">dist</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Node</span><span class="p">]</span> <span class="o">=</span> <span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Node</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return string representation of the Node relationship&quot;&quot;&quot;</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+        <span class="n">parent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span><span class="o">.</span><span class="n">name</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="k">else</span> <span class="s1">&#39;None&#39;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Node </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">, up=</span><span class="si">{</span><span class="n">parent</span><span class="si">}</span><span class="s2">, children=</span><span class="si">{</span><span class="n">children</span><span class="si">}</span><span class="s2">&gt;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">is_leaf</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return True if Node is a leaf (i.e., no children)&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">is_root</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return True if Node is the root.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">up</span> <span class="ow">is</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">add_child</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">node</span><span class="p">:</span> <span class="n">Node</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Add a Node as a child to this one.&quot;&quot;&quot;</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">up</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">children</span> <span class="o">+=</span> <span class="p">(</span><span class="n">node</span><span class="p">,)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">node_a</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="n">node_b</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">node_c</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="traversal">Traversal<a class="headerlink" href="#traversal" title="Permanent link">&para;</a></h3>
+<p>A key feature of tree objects is the process of traversal, by which each 
+Node is visited in some determined order. Traversal algorithms make it 
+possible to calculate information on trees fast and efficiently, typically
+by performing calculations on parts of the tree which can be used for later
+calculations. Examples of this include <code>Felsenstein's pruning algorithm</code>, 
+which we will cover later, as an efficient traversal algorithm for calculating
+parsimony or likelihood scores on trees (citation). Here we will first cover
+a more simple example, showing how traversal provides an efficient method for
+calculating the Node coordinate layout for plotting trees.</p>
+<p>As a toy example let's extend our Node class object by creating a superclass
+-- a class that inherits the properties of the Node class, but also contains
+additional attributes or functions that are defined. Here we are using 
+the class extending only as a teaching tool, to break up the description of 
+this class into smaller chunks. However, we will later see examples where 
+...
+This class will have the same <code>__init__</code> as the NodeBase, meaning that it
+also takes an optional name and dist values.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Generator</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">deque</span>
+
+<span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="n">NodeBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Tree is a superclass of Node with traversal functions.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_traverse_in_root_to_tip_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Yield all nodes in order of n descendants from root to tips.&quot;&quot;&quot;</span>
+        <span class="c1"># start with root in queue. When queue is empty traversal is finished.</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="bp">self</span><span class="p">])</span>
+        <span class="k">while</span> <span class="n">queue</span><span class="p">:</span>
+
+            <span class="c1"># return the left-most node in the queue. yield returns current</span>
+            <span class="c1"># state while allowing the func to resume (i.e., a generator).</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">yield</span> <span class="n">node</span>
+
+            <span class="c1"># append the node&#39;s children to the right end of the queue</span>
+            <span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_traverse_in_tips_to_root_order</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Yield all nodes in order by visiting children before parents.&quot;&quot;&quot;</span>
+        <span class="n">stack1</span> <span class="o">=</span> <span class="n">deque</span><span class="p">([</span><span class="bp">self</span><span class="p">])</span>
+        <span class="n">stack2</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+
+        <span class="k">while</span> <span class="n">stack1</span><span class="p">:</span>
+
+            <span class="c1"># pop a node from stack1 and append to stack2</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="n">stack1</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+            <span class="n">stack2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+
+            <span class="c1"># append left and right of current node to stack1</span>
+            <span class="n">stack1</span><span class="o">.</span><span class="n">append</span><span class="p">()</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">node</span><span class="o">.</span><span class="n">is_leaf</span><span class="p">():</span>
+                <span class="n">queue</span><span class="o">.</span><span class="n">extend</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">node</span>
+
+    <span class="k">def</span> <span class="nf">_traverse_parents_then_children</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Yield all nodes in order of parents before children.&quot;&quot;&quot;</span>
+        <span class="n">queue</span> <span class="o">=</span> <span class="n">deque</span><span class="p">()</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">while</span> <span class="n">node</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+            <span class="c1"># attach current node&#39;s children to front of queue</span>
+            <span class="n">queue</span><span class="o">.</span><span class="n">extendleft</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+            <span class="c1"># return the current node</span>
+            <span class="k">yield</span> <span class="n">node</span>
+
+
+            <span class="c1"># update node from left of queue</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">node</span> <span class="o">=</span> <span class="n">queue</span><span class="o">.</span><span class="n">popleft</span><span class="p">()</span>
+            <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+                <span class="n">node</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<h3 id="create-a-simple-tree">Create a simple tree<a class="headerlink" href="#create-a-simple-tree" title="Permanent link">&para;</a></h3>
+<p>This is a simplified version of a function we used in the last lesson to 
+generate a random tree of connected Nodes in <code>toytree</code>, using the function
+<code>toytree.rtree.imbtree</code>. The function below will return an imbalanced tree
+by starting with a root Node and adding pairs of children iteratively to 
+the right descendant Node until the number of connected tip Nodes reaches
+the requested number (ntips). It also extends the <code>dist</code> attribute of the 
+left child Node each iteration </p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ladder_tree</span><span class="p">(</span><span class="n">ntips</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return a ladder-like tree of Node objects.&quot;&quot;&quot;</span>
+    <span class="c1"># create root Node and select it as current focal node</span>
+    <span class="n">node</span> <span class="o">=</span> <span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ntips</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="c1"># add two children to the focal node</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">node</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">Node</span><span class="p">(</span><span class="n">idx</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dist</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+        <span class="c1"># make right child the new focal node</span>
+        <span class="n">node</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">root</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> 
+</code></pre></div>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../1.3-visualization/" class="md-footer__link md-footer__link--prev" aria-label="Previous: x.3 - Visualization" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              x.3 - Visualization
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../1.5-code-tree-class/" class="md-footer__link md-footer__link--next" aria-label="Next: x.5 - Code - Tree class" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              x.5 - Code - Tree class
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "search.highlight", "search.suggest", "content.code.annotate"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.01de222e.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>
